@@ -88,9 +88,9 @@
                             <?php
                                  echo '<a href="./edit.php?item_id=' . $row['item_id'] . '" class="btn btn-success">Edit</a>'
                             ?>
-                            <a href="./delete.php" class="btn btn-danger">
-                                Delete
-                            </a>
+                            <?php
+                                 echo '<a href="./delete.php?item_id=' . $row['item_id'] . '" class="btn btn-danger">Delete</a>'
+                            ?>
                         </td>
                     </tr>
                     <?php }

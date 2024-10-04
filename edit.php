@@ -15,7 +15,6 @@
                 $task_desc = $row["task_desc"];
                 $due_date = $row["due_date"];
             }
-            
         }
     }
 
@@ -35,6 +34,7 @@
         }
         
     }
+
 ?>
 
 <!DOCTYPE html>

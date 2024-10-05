@@ -1,6 +1,7 @@
 <?php
     include("./config/db.php");
 
+    //Select the specific columns we want from the connected tables
     $selectQuery = "
                     SELECT i.item_id, i.task_name, i.task_desc, i.created_at, i.is_favorite, d.due_date
                     FROM item_table i
@@ -93,8 +94,10 @@
                                 echo '<a href="./delete.php?item_id=' . $row['item_id'] . '" class="btn btn-danger">Delete</a>'
                             ?>
                             <?php 
+                                //Check if the task is marked as favorite
                                 $starredIcon = $row["is_favorite"] ? 'bi-star-fill' : 'bi-star';
-
+                                
+                                //When clicked, output with the appropriate icon
                                 echo '<a href="./starred.php?item_id=' . $row['item_id'] . '" class="btn btn-outline-dark">
                                     <i class= "bi ' . $starredIcon . ' fs-6" ></i>
                                 </a>'

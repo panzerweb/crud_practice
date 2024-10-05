@@ -2,7 +2,7 @@
     include("./config/db.php");
 
     $selectQuery = "
-                    SELECT i.item_id, i.task_name, i.task_desc, i.created_at, d.due_date
+                    SELECT i.item_id, i.task_name, i.task_desc, i.created_at, i.is_favorite, d.due_date
                     FROM item_table i
                     LEFT JOIN deadline d ON i.item_id = d.item_id;
                     ";
@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./assets/bootstrap-5.3.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="./assets/bootstrap-5.3.3-dist/css/bootstrap.min.css">
 </head>
@@ -86,10 +87,17 @@
                         <td><?php echo htmlspecialchars($row["due_date"]); ?></td>
                         <td>
                             <?php
-                                 echo '<a href="./edit.php?item_id=' . $row['item_id'] . '" class="btn btn-success">Edit</a>'
+                                echo '<a href="./edit.php?item_id=' . $row['item_id'] . '" class="btn btn-success">Edit</a>'
                             ?>
                             <?php
-                                 echo '<a href="./delete.php?item_id=' . $row['item_id'] . '" class="btn btn-danger">Delete</a>'
+                                echo '<a href="./delete.php?item_id=' . $row['item_id'] . '" class="btn btn-danger">Delete</a>'
+                            ?>
+                            <?php 
+                                $starredIcon = $row["is_favorite"] ? 'bi-star-fill' : 'bi-star';
+
+                                echo '<a href="./starred.php?item_id=' . $row['item_id'] . '" class="btn btn-outline-dark">
+                                    <i class= "bi ' . $starredIcon . ' fs-6" ></i>
+                                </a>'
                             ?>
                         </td>
                     </tr>

@@ -83,9 +83,7 @@
             <div class="row mb-3">
                 <label for="taskdesc" class="form-label">Description</label>
                 <div class="col-sm-12">
-                    <textarea class="form-control" id="taskdesc" rows="3" name="taskdesc">
-                        <?php echo $task_desc?>
-                    </textarea>
+                    <textarea class="form-control" id="taskdesc" rows="3" name="taskdesc"><?php echo $task_desc?></textarea>
                 </div>
             </div>
             <div class="row mb-3">
